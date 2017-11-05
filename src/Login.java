@@ -174,13 +174,13 @@ public class Login extends javax.swing.JFrame {
     */   
         try{
             String nombre = user.getText();
-            char[] password= pass.getPassword();
+            String password = new String(pass.getPassword());
+
             //SELECT tipoUsuario FROM `usuarios` WHERE nombreUsuario='admin' AND password='admin';
             String sqlUsuario="SELECT tipoUsuario from usuarios where nombreUsuario='"+nombre+"'"+" AND password='"+password+"'";
             Connection c = con.MySQLConnect();
             Statement st = c.createStatement();
             ResultSet re = st.executeQuery(sqlUsuario);
-            
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error en la tabla usuarios");
