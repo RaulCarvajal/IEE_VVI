@@ -171,7 +171,7 @@ public class Login extends javax.swing.JFrame {
     /* 
         Que select tipoUsuario where usuario == (o like no me acuerdo) al usuario que escriben en el input AND password == password 
         que escriben en el input Si la consulta te regresa algo Que seria el campo tipoUsuario ya lo metes en ub switch y 
-        si es administrativo mandas a llamar una ventana o si es otro rol mandas a llamar otra ventana
+        si es administrativo mandas a llamar una ventana o si es otro rol mandas a llamar otra ventana.
     */   
         try{
             String nombre = user.getText();
