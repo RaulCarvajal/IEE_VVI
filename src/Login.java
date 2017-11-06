@@ -1,9 +1,11 @@
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import modelo.Conexion;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,13 +22,18 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    MySql mysql,con;
+    Conexion DB;
     java.sql.Connection cn;
+    public Login windows;
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
-        mysql = new MySql();
         //cn = mysql.MySQLConnect();
+        DB = new Conexion();
+        cn = DB.getConexion();
+        if(null==cn){
+                JOptionPane.showMessageDialog(this, "No se pudo Conectar a la Base de Datos","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -166,22 +173,28 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void validar_login() {
-
-    /* 
-        Que select tipoUsuario where usuario == (o like no me acuerdo) al usuario que escriben en el input AND password == password 
+    /*  Que select tipoUsuario where usuario == (o like no me acuerdo) al usuario que escriben en el input AND password == password 
         que escriben en el input Si la consulta te regresa algo Que seria el campo tipoUsuario ya lo metes en ub switch y 
-        si es administrativo mandas a llamar una ventana o si es otro rol mandas a llamar otra ventana.
-    */   
-        try{
+        si es administrativo mandas a llamar una ventana o si es otro rol mandas a llamar otra ventana.*/   
             String nombre = user.getText();
             String password = new String(pass.getPassword());
-
+            PreparedStatement ps = null;
+            ResultSet rs = null;
             //SELECT tipoUsuario FROM `usuarios` WHERE nombreUsuario='admin' AND password='admin';
             String sqlUsuario="SELECT tipoUsuario from usuarios where nombreUsuario='"+nombre+"'"+" AND password='"+password+"'";
-            Connection c = con.MySQLConnect();
-            Statement st = c.createStatement();
-            ResultSet re = st.executeQuery(sqlUsuario);
             
+            
+        try{
+            ps = DB.getConexion().prepareStatement(sqlUsuario);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                if(password.equals(rs.getString(2))){
+                    
+                }
+                
+            }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error en la tabla usuarios");
         }
