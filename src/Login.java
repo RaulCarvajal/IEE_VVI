@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,6 +70,9 @@ public class Login extends javax.swing.JFrame {
 
         user.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         user.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                userFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 userFocusLost(evt);
             }
@@ -213,7 +217,8 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!user.getText().isEmpty()){
             if(!existsUsu(user.getText())){
-                user.setText(user.getText()+" <-- Revisar nombre de usuario");
+                user.setText(user.getText()+" <- Revisar nombre de usuario");
+                user.setForeground(Color.red);
             }
         }
     }//GEN-LAST:event_userFocusLost
@@ -222,6 +227,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void userFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userFocusGained
+        // TODO add your handling code here:
+        user.setText("");
+        pass.setText("");
+        user.setForeground(Color.BLACK);
+    }//GEN-LAST:event_userFocusGained
 
     public boolean existsUsu(String usu){
         try{
