@@ -22,18 +22,16 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    Conexion DB;
-    java.sql.Connection cn;
-    public Login windows;
+    
+    MySql db;/*******/
+    String contra;
+    String usuario;
+    int type;
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
         //cn = mysql.MySQLConnect();
-        DB = new Conexion();
-        cn = DB.getConexion();
-        if(null==cn){
-                JOptionPane.showMessageDialog(this, "No se pudo Conectar a la Base de Datos","Error",JOptionPane.ERROR_MESSAGE);
-        }
+        db=new MySql();/*************/
     }
 
     /**
@@ -70,6 +68,11 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Entrar al sistema", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 3, 18))); // NOI18N
 
         user.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        user.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                userFocusLost(evt);
+            }
+        });
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userActionPerformed(evt);
@@ -93,6 +96,11 @@ public class Login extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -172,35 +180,6 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void validar_login() {
-    /*  Que select tipoUsuario where usuario == (o like no me acuerdo) al usuario que escriben en el input AND password == password 
-        que escriben en el input Si la consulta te regresa algo Que seria el campo tipoUsuario ya lo metes en ub switch y 
-        si es administrativo mandas a llamar una ventana o si es otro rol mandas a llamar otra ventana.*/   
-            String nombre = user.getText();
-            String password = new String(pass.getPassword());
-            PreparedStatement ps = null;
-            ResultSet rs = null;
-            //SELECT tipoUsuario FROM `usuarios` WHERE nombreUsuario='admin' AND password='admin';
-            String sqlUsuario="SELECT tipoUsuario from usuarios where nombreUsuario='"+nombre+"'"+" AND password='"+password+"'";
-            
-            
-        try{
-            ps = DB.getConexion().prepareStatement(sqlUsuario);
-            ps.setString(1, nombre);
-            rs = ps.executeQuery();
-
-            if(rs.next()){
-                if(password.equals(rs.getString(2))){
-                    
-                }
-                
-            }
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Error en la tabla usuarios");
-        }
-    }//login
-
-
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_userActionPerformed
@@ -211,10 +190,63 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        PrincipalJDI bd=new PrincipalJDI();
-        bd.show();
+        if(!pass.getText().isEmpty()){
+            if(pass.getText().equals(contra)&&user.getText().equals(usuario)){
+                switch(type){
+                    case 1:
+                        msg("Usuario tipo1");
+                        break;
+                    case 2:
+                        msg("Usuario tipo2");
+                        break;
+                    case 3:
+                        msg("Usuario tipo3");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void userFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userFocusLost
+        // TODO add your handling code here:
+        if(!user.getText().isEmpty()){
+            if(!existsUsu(user.getText())){
+                user.setText(user.getText()+" <-- Revisar nombre de usuario");
+            }
+        }
+    }//GEN-LAST:event_userFocusLost
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public boolean existsUsu(String usu){
+        try{
+            Connection con = db.MySQLConnect();
+            Statement s =  con.createStatement();
+            String sql="select nombreUsuario,password,tipoUsuario from usuarios where nombreUsuario =\""+usu+"\"";
+            ResultSet r = s.executeQuery(sql);
+            boolean found = false;
+            while(r.next()){ 
+                found=true; 
+                usuario = r.getString("nombreUsuario"); 
+                contra = r.getString("password");
+                type = r.getInt("tipoUsuario");
+            }
+            return found;
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public void msg(String cad){
+        javax.swing.JOptionPane.showMessageDialog(null,cad);
+    }
+    
     /**
      * @param args the command line arguments
      */
