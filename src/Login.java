@@ -194,17 +194,47 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        /*
+    1. Jefe de informatica - admin
+    2. Administración
+    3. Presidencia
+    4. Empleado
+    5. Secretaria
+    6. Jefe de departamento
+    */
         if(!pass.getText().isEmpty()){
             if(pass.getText().equals(contra)&&user.getText().equals(usuario)){
                 switch(type){
-                    case 1:
-                        msg("Usuario tipo1");
+                    case 1://Jefe de informatica - Administrador -> PrincipalJDI
+                        this.setVisible(false);
+                        PrincipalJDI nw=new PrincipalJDI();
+                        nw.show();
                         break;
-                    case 2:
-                        msg("Usuario tipo2");
+                    case 2://Administación
+                        this.setVisible(false);
+                        Dep_admi nw1=new Dep_admi();
+                        nw1.show();
                         break;
-                    case 3:
-                        msg("Usuario tipo3");
+                    case 3://Presidencia
+                        this.setVisible(false);
+                        PrincipalPresidencia nw2=new PrincipalPresidencia();
+                        nw2.show();
+                        break;
+                    case 4://Empleado
+                        this.setVisible(false);
+                        Trabajador nw3=new Trabajador();
+                        nw3.show();
+                        break;
+                    case 5://Secretaria
+                        this.setVisible(false);
+                        PrincipalSecretaria nw4=new PrincipalSecretaria();
+                        nw4.show();
+                        break;
+                    case 6://Jefe de departamento
+                        this.setVisible(false);
+                        //PrincipalPresidencia nw5=new PrincipalPresidencia();
+                        //nw5.show();
+                        msg("Hola patrón");
                         break;
                     default:
                         break;
@@ -225,7 +255,53 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        /*
+    1. Jefe de informatica - admin
+    2. Administración
+    3. Presidencia
+    4. Empleado
+    5. Secretaria
+    6. Jefe de departamento
+    */
+        if(!pass.getText().isEmpty()){
+            if(pass.getText().equals(contra)&&user.getText().equals(usuario)){
+                switch(type){
+                    case 1://Jefe de informatica - Administrador -> PrincipalJDI
+                        this.setVisible(false);
+                        PrincipalJDI nw=new PrincipalJDI();
+                        nw.show();
+                        break;
+                    case 2://Administación
+                        this.setVisible(false);
+                        Dep_admi nw1=new Dep_admi();
+                        nw1.show();
+                        break;
+                    case 3://Presidencia
+                        this.setVisible(false);
+                        PrincipalPresidencia nw2=new PrincipalPresidencia();
+                        nw2.show();
+                        break;
+                    case 4://Empleado
+                        this.setVisible(false);
+                        Trabajador nw3=new Trabajador();
+                        nw3.show();
+                        break;
+                    case 5://Secretaria
+                        this.setVisible(false);
+                        PrincipalSecretaria nw4=new PrincipalSecretaria();
+                        nw4.show();
+                        break;
+                    case 6://Jefe de departamento
+                        this.setVisible(false);
+                        //PrincipalPresidencia nw5=new PrincipalPresidencia();
+                        //nw5.show();
+                        msg("Hola patrón");
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void userFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userFocusGained
