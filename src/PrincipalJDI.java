@@ -1,3 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Conexion;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,7 +27,9 @@ public class PrincipalJDI extends javax.swing.JFrame{
     String aInf[]={"Escojer uno","Supervisor","Personal"};
     String aAdm[]={"Escojer uno","Secretaria","Empleado/Chofer"};
 
-    MySql db=new MySql();
+    //MySql db=new MySql();
+    Conexion con = new Conexion();
+    Connection conn = con.getConexion();
     public PrincipalJDI() {
         initComponents();
     }
@@ -1148,6 +1160,58 @@ public class PrincipalJDI extends javax.swing.JFrame{
         if(st.isEmpty()){
             msg("Llenar campo");
             ct.requestFocus();
+        }
+    }
+    public void insertar_personal(){
+        
+        try {
+            String nombre = txtnom.getText();
+            String apepat = txtpat.getText();
+            String apemat = txtmat.getText();
+            String rfc = txtrfc.getText();
+            //Capturar fecha de nacimiento
+            Date fecnac= txtfecnac.getDate();
+            //convertir el fecnac 
+            //java.sql.Date date2 = new java.sql.Date(d.getTime());
+            //java.sql.Date date = new java.sql.Date(fecnac);
+            //    java.util.Date utilDate = new java.util.Date();
+            java.sql.Date sqlDate;
+            sqlDate = new java.sql.Date(fecnac.getTime());
+            
+            String telefono = txtTelefono.getText();
+            String calle = txtcalle.getText();
+            String colonia = txtcolonia.getText();
+            String cp = txtcp.getText();
+            String numlic = txtnumlic.getText();
+            String numcred = txtnumcred.getText();
+            String TipoEmpleado= (String) cbTipo.getSelectedItem() ;
+            //String puesto =txtpuesto.getText();
+            String area= txtarea.getText();
+            //last_insert_id()
+            //insert into autobuses_viajeros (id_bus, id_viajero, fecha) VALUES (1, last_insert_id(), now());
+
+            String sqlpersonal = "INSERT INTO personal (nombrePersonal,apellidoPaterno,apellidoMaterno,calle,colonia,codigoPostal,telefono," +
+                    "fechaNac,rfc,nolic,nocred,nombreArea,tipoPuesto,usuarios_idusuarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,last_insert_id())" ;
+            PreparedStatement pst = conn.prepareStatement(sqlpersonal);
+            pst.setString(1, nombre);
+            pst.setString(2, apepat);
+            pst.setString(3, apemat);
+            pst.setString(4, calle);
+            pst.setString(5, colonia);
+            pst.setString(6, cp);
+            pst.setString(7,telefono);
+            pst.setDate(8, sqlDate);
+            pst.setString(9,rfc);
+            pst.setString(10, numlic);
+            pst.setString(11,numcred);
+            pst.setString(12, area);
+            pst.setString(13,TipoEmpleado);
+            pst.executeUpdate();
+  
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            JOptionPane.showMessageDialog(null,"Datos insertados Correctamente");
         }
     }
     
