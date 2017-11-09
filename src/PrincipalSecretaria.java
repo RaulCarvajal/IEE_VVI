@@ -1,6 +1,8 @@
 
 import java.sql.*;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Conexion;
 
 /*
@@ -24,37 +26,49 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         initComponents();
     }
     public void insertarEmpleado(){
-        //leer valores
-        //String categoria1 = (String) jCCategoria1.getSelectedItem(); new String(JPasswordField.getPassword())
-        
-        String TipoEmpleado= (String) cbTipo.getSelectedItem() ;
-        String nombreUsuario = txtNombreUsuario.getText();
-        String password = new String(txtpassword.getPassword());
-        String nombre = txtNombre.getText();
-        String apepat = txtApePat.getText();
-        String apemat = txtApeMat.getText();
-        String rfc = txtrfc.getText();
-        //Capturar fecha de nacimiento 
-        Date fecnac= txtfecnac.getDate();
-        String telefono = txtTelefono.getText();
-        String calle = txtcalle.getText();
-        String colonia = txtcolonia.getText();
-        String cp = txtcp.getText();
-        String numlic = txtnumlic.getText();
-        
-        String puesto =txtpuesto.getText();
-        String area= txtarea.getText();
-        
-        /*
-        INSERT INTO `personal` (`nombrePersonal`, `apellidoPaterno`, `apellidoMaterno`, `calle`, `colonia`, `codigoPostal`, `telefono`, 
-        `fechaNac`, `rfc`, `nolic`, `nocred`, `nombreArea`, `tipoPuesto`, `usuarios_idusuarios`) VALUES ('Oliver Jasiel', 'Galaviz', 
-        'Arroyo', 'Privada Chapultepec No. 22', 'Bellavista', '63501', '3117407111', '1994-11-19', 'GAAO941119', 
-        '654651346816', '651651681651', 'Administracion', 'Empleado', '1')
-        */
-        
-        //consulta SQL
-        //preparar la sentencia sql
-        PreparedStatement pst = conn.prepareStatement(cp);
+        try {
+            //leer valores
+            //String categoria1 = (String) jCCategoria1.getSelectedItem(); new String(JPasswordField.getPassword())
+            
+            String TipoEmpleado= (String) cbTipo.getSelectedItem() ;
+            String nombreUsuario = txtNombreUsuario.getText();
+            String password = new String(txtpassword.getPassword());
+            String nombre = txtNombre.getText();
+            String apepat = txtApePat.getText();
+            String apemat = txtApeMat.getText();
+            String rfc = txtrfc.getText();
+            //Capturar fecha de nacimiento
+            Date fecnac= txtfecnac.getDate();
+            String telefono = txtTelefono.getText();
+            String calle = txtcalle.getText();
+            String colonia = txtcolonia.getText();
+            String cp = txtcp.getText();
+            String numlic = txtnumlic.getText();
+            
+            String puesto =txtpuesto.getText();
+            String area= txtarea.getText();
+            
+            /*
+            INSERT INTO `personal` (`nombrePersonal`, `apellidoPaterno`, `apellidoMaterno`, `calle`, `colonia`, `codigoPostal`, `telefono`,
+            `fechaNac`, `rfc`, `nolic`, `nocred`, `nombreArea`, `tipoPuesto`, `usuarios_idusuarios`) VALUES ('Oliver Jasiel', 'Galaviz',
+            'Arroyo', 'Privada Chapultepec No. 22', 'Bellavista', '63501', '3117407111', '1994-11-19', 'GAAO941119',
+            '654651346816', '651651681651', 'Administracion', 'Empleado', '1')
+            */
+            String sqlusuario ="INSERT INTO usuarios (nombreUsuario,password,tipoUsuario,status) VALUES (?,?,4,'Activo')";
+            PreparedStatement pst = conn.prepareStatement(sqlusuario);
+            pst.setString(1, nombreUsuario);
+            pst.setString(2, password);
+            pst.executeUpdate();
+            
+            
+            //consulta SQL tabla personal
+            //preparar la sentencia sql
+            /*String sql = "INSERT INTO personal (nombrePersonal,apellidoPaterno,apellidoMaterno,calle,colonia,codigoPostal,telefono," +
+                    "        fechaNac,rfc,nolic,nocred,nombreArea,tipoPuesto,usuarios_idusuarios) VALUES ()";*/
+            //PreparedStatement pst = conn.prepareStatement(cp);
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -390,6 +404,11 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         );
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         btnlimpiar.setText("Limpiar");
 
@@ -568,6 +587,11 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
     private void txtpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpuestoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpuestoActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        // TODO add your handling code here:
+        insertarEmpleado();
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
