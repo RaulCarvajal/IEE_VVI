@@ -30,24 +30,9 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
             //leer valores
             //String categoria1 = (String) jCCategoria1.getSelectedItem(); new String(JPasswordField.getPassword())
             
-            String TipoEmpleado= (String) cbTipo.getSelectedItem() ;
+  
             String nombreUsuario = txtNombreUsuario.getText();
             String password = new String(txtpassword.getPassword());
-            String nombre = txtNombre.getText();
-            String apepat = txtApePat.getText();
-            String apemat = txtApeMat.getText();
-            String rfc = txtrfc.getText();
-            //Capturar fecha de nacimiento
-            Date fecnac= txtfecnac.getDate();
-            String telefono = txtTelefono.getText();
-            String calle = txtcalle.getText();
-            String colonia = txtcolonia.getText();
-            String cp = txtcp.getText();
-            String numlic = txtnumlic.getText();
-            
-            String puesto =txtpuesto.getText();
-            String area= txtarea.getText();
-            
             /*
             INSERT INTO `personal` (`nombrePersonal`, `apellidoPaterno`, `apellidoMaterno`, `calle`, `colonia`, `codigoPostal`, `telefono`,
             `fechaNac`, `rfc`, `nolic`, `nocred`, `nombreArea`, `tipoPuesto`, `usuarios_idusuarios`) VALUES ('Oliver Jasiel', 'Galaviz',
@@ -68,6 +53,58 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
             //PreparedStatement pst = conn.prepareStatement(cp);
         } catch (SQLException ex) {
             Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void insertar_personal(){
+        
+        try {
+            String nombre = txtNombre.getText();
+            String apepat = txtApePat.getText();
+            String apemat = txtApeMat.getText();
+            String rfc = txtrfc.getText();
+            //Capturar fecha de nacimiento
+            Date fecnac= txtfecnac.getDate();
+            //convertir el fecnac 
+            //java.sql.Date date2 = new java.sql.Date(d.getTime());
+            //java.sql.Date date = new java.sql.Date(fecnac);
+            //    java.util.Date utilDate = new java.util.Date();
+            java.sql.Date sqlDate;
+            sqlDate = new java.sql.Date(fecnac.getTime());
+            
+            String telefono = txtTelefono.getText();
+            String calle = txtcalle.getText();
+            String colonia = txtcolonia.getText();
+            String cp = txtcp.getText();
+            String numlic = txtnumlic.getText();
+            String numcred = txtnumcred.getText();
+            String TipoEmpleado= (String) cbTipo.getSelectedItem() ;
+            //String puesto =txtpuesto.getText();
+            String area= txtarea.getText();
+            //last_insert_id()
+            //insert into autobuses_viajeros (id_bus, id_viajero, fecha) VALUES (1, last_insert_id(), now());
+
+            String sqlpersonal = "INSERT INTO personal (nombrePersonal,apellidoPaterno,apellidoMaterno,calle,colonia,codigoPostal,telefono," +
+                    "fechaNac,rfc,nolic,nocred,nombreArea,tipoPuesto,usuarios_idusuarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,last_insert_id())" ;
+            PreparedStatement pst = conn.prepareStatement(sqlpersonal);
+            pst.setString(1, nombre);
+            pst.setString(2, apepat);
+            pst.setString(3, apemat);
+            pst.setString(4, calle);
+            pst.setString(5, colonia);
+            pst.setString(6, cp);
+            pst.setString(7,telefono);
+            pst.setDate(8, sqlDate);
+            pst.setString(9,rfc);
+            pst.setString(10, numlic);
+            pst.setString(11,numcred);
+            pst.setString(12, area);
+            pst.setString(13,TipoEmpleado);
+            pst.executeUpdate();
+  
+        } catch (SQLException ex) {
+            Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            
         }
     }
 
@@ -130,7 +167,6 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         cbTipo = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
-        txtpuesto = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtarea = new javax.swing.JTextField();
 
@@ -321,7 +357,7 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -348,12 +384,12 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(txtfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtfecnac, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuario"));
@@ -435,12 +471,6 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel17.setText("Puesto");
 
-        txtpuesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpuestoActionPerformed(evt);
-            }
-        });
-
         jLabel18.setText("Area");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -450,31 +480,26 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel18))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtpuesto)
-                            .addComponent(txtarea, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))))
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtarea, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(txtpuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
                     .addComponent(txtarea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -544,7 +569,7 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
+                        .addGap(86, 86, 86)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAceptar)
                             .addComponent(btnlimpiar)))
@@ -584,13 +609,10 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTipoActionPerformed
 
-    private void txtpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpuestoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpuestoActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
         insertarEmpleado();
+        insertar_personal();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
@@ -680,7 +702,6 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
     private javax.swing.JTextField txtnumcred;
     private javax.swing.JTextField txtnumlic;
     private javax.swing.JPasswordField txtpassword;
-    private javax.swing.JTextField txtpuesto;
     private javax.swing.JTextField txtrfc;
     // End of variables declaration//GEN-END:variables
 }
