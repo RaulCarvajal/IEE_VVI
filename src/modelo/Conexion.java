@@ -37,16 +37,16 @@ public class Conexion {
             conexion = DriverManager.getConnection(servidor, usuario, pass);
 
         } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error en la conexión a la base de datos: " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error en la conexión a la base de datos: " + ex.getMessage());
             conexion = null;
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error en la conexión a la base de datos: " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error en la conexión a la base de datos: " + ex.getMessage());
             conexion = null;
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex, "Error en la conexión a la base de datos: " + ex.getMessage(), JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error en la conexión a la base de datos: " + ex.getMessage());
             conexion = null;
         } finally {
-            JOptionPane.showMessageDialog(null, "Conexión Exitosa");
+            System.out.println("Conexión Exitosa");
             return conexion;
         }
     }
