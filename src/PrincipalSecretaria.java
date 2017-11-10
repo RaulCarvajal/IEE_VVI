@@ -170,6 +170,9 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtarea = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -270,6 +273,12 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel8.setText("Calle:");
 
+        txtcalle.setNextFocusableComponent(txtcolonia);
+        txtcalle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcalleFocusLost(evt);
+            }
+        });
         txtcalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcalleActionPerformed(evt);
@@ -278,7 +287,26 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel9.setText("Colonia:");
 
+        txtcolonia.setNextFocusableComponent(txtcp);
+        txtcolonia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcoloniaFocusLost(evt);
+            }
+        });
+
         jLabel13.setText("Codigo Postal:");
+
+        txtcp.setNextFocusableComponent(txtnumlic);
+        txtcp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcpFocusLost(evt);
+            }
+        });
+        txtcp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtcpKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -325,9 +353,51 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel6.setText("RFC:");
 
+        txtNombre.setNextFocusableComponent(txtApePat);
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
+
+        txtApePat.setNextFocusableComponent(txtApeMat);
+        txtApePat.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApePatFocusLost(evt);
+            }
+        });
+
+        txtApeMat.setNextFocusableComponent(txtrfc);
+        txtApeMat.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApeMatFocusLost(evt);
+            }
+        });
+
+        txtrfc.setNextFocusableComponent(txtfecnac);
+        txtrfc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtrfcFocusLost(evt);
+            }
+        });
+
         jLabel12.setText("Fecha de Nacimiento:");
 
         jLabel14.setText("Telefono");
+
+        txtTelefono.setNextFocusableComponent(txtcalle);
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusLost(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyPressed(evt);
+            }
+        });
+
+        txtfecnac.setNextFocusableComponent(txtTelefono);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -397,6 +467,12 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel10.setText("Nombre de usuario:");
 
+        txtNombreUsuario.setNextFocusableComponent(txtpassword);
+        txtNombreUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreUsuarioFocusLost(evt);
+            }
+        });
         txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreUsuarioActionPerformed(evt);
@@ -404,6 +480,18 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         });
 
         jLabel11.setText("Contraseña");
+
+        txtpassword.setNextFocusableComponent(txtNombre);
+        txtpassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtpasswordFocusLost(evt);
+            }
+        });
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -453,8 +541,21 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
 
         jLabel15.setText("Numero de licencia: ");
 
+        txtnumlic.setNextFocusableComponent(txtnumcred);
+        txtnumlic.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtnumlicFocusLost(evt);
+            }
+        });
+
         jLabel16.setText("Numero de credencial:");
 
+        txtnumcred.setNextFocusableComponent(cbTipo);
+        txtnumcred.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtnumcredFocusLost(evt);
+            }
+        });
         txtnumcred.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnumcredActionPerformed(evt);
@@ -464,6 +565,7 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Organizacion"));
 
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Chofer", " " }));
+        cbTipo.setNextFocusableComponent(txtarea);
         cbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoActionPerformed(evt);
@@ -473,6 +575,18 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         jLabel17.setText("Puesto");
 
         jLabel18.setText("Area");
+
+        txtarea.setNextFocusableComponent(btnAceptar);
+        txtarea.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtareaFocusLost(evt);
+            }
+        });
+        txtarea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtareaKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -575,10 +689,24 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
                             .addComponent(btnAceptar)
                             .addComponent(btnlimpiar)))
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Contrato", jPanel3);
+
+        jMenu1.setText("Archivo");
+
+        jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -586,7 +714,7 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 986, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -619,6 +747,119 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
         insertar_personal();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void txtNombreUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreUsuarioFocusLost
+        // TODO add your handling code here:
+        esNulo(txtNombreUsuario.getText(),txtNombreUsuario);
+    }//GEN-LAST:event_txtNombreUsuarioFocusLost
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void txtpasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtpasswordFocusLost
+        // TODO add your handling code here:
+        esNulo(txtpassword.getText(),txtpassword);
+    }//GEN-LAST:event_txtpasswordFocusLost
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+        esNulo(txtNombre.getText(),txtNombre); 
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtApePatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApePatFocusLost
+        // TODO add your handling code here:
+        esNulo(txtApePat.getText(),txtApePat); 
+    }//GEN-LAST:event_txtApePatFocusLost
+
+    private void txtApeMatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApeMatFocusLost
+        // TODO add your handling code here:
+        esNulo(txtApeMat.getText(),txtApeMat); 
+    }//GEN-LAST:event_txtApeMatFocusLost
+
+    private void txtrfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrfcFocusLost
+        // TODO add your handling code here:
+        esNulo(txtrfc.getText(),txtrfc); 
+    }//GEN-LAST:event_txtrfcFocusLost
+
+    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
+        // TODO add your handling code here:
+        esNulo(txtTelefono.getText(),txtTelefono); 
+    }//GEN-LAST:event_txtTelefonoFocusLost
+
+    private void txtTelefonoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyPressed
+        // TODO add your handling code here:
+        tieneNum(evt.getKeyChar(),txtTelefono);
+    }//GEN-LAST:event_txtTelefonoKeyPressed
+
+    private void txtcalleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcalleFocusLost
+        // TODO add your handling code here:
+        esNulo(txtcalle.getText(),txtcalle); 
+    }//GEN-LAST:event_txtcalleFocusLost
+
+    private void txtcoloniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcoloniaFocusLost
+        // TODO add your handling code here:
+        esNulo(txtcolonia.getText(),txtcolonia); 
+    }//GEN-LAST:event_txtcoloniaFocusLost
+
+    private void txtcpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcpFocusLost
+        // TODO add your handling code here:
+        esNulo(txtcp.getText(),txtcp);
+    }//GEN-LAST:event_txtcpFocusLost
+
+    private void txtcpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcpKeyPressed
+        // TODO add your handling code here:
+        tieneNum(evt.getKeyChar(),txtcp);
+    }//GEN-LAST:event_txtcpKeyPressed
+
+    private void txtnumlicFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnumlicFocusLost
+        // TODO add your handling code here:
+        esNulo(txtnumlic.getText(),txtnumlic);
+    }//GEN-LAST:event_txtnumlicFocusLost
+
+    private void txtnumcredFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtnumcredFocusLost
+        // TODO add your handling code here:
+        esNulo(txtnumcred.getText(),txtnumcred);
+    }//GEN-LAST:event_txtnumcredFocusLost
+
+    private void txtareaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtareaFocusLost
+        // TODO add your handling code here:
+        esNulo(txtarea.getText(),txtarea);
+    }//GEN-LAST:event_txtareaFocusLost
+
+    private void txtareaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtareaKeyReleased
+        // TODO add your handling code here:
+        tieneNum(evt.getKeyChar(),txtarea);
+    }//GEN-LAST:event_txtareaKeyReleased
+
+    //Tiene numeros
+    public void tieneNum(char ch, javax.swing.JTextField ct){
+        try {
+            if(ch!='-'){
+                int x = Integer.parseInt(ch+"");
+            }
+        } catch (NumberFormatException nfe) {
+            ct.setText("");
+            //msg("Solo números");
+        }
+    }
+    
+    //Es nulo si es nulo regresar a ese jText
+    public void esNulo(String st, javax.swing.JTextField ct){
+        if(st.isEmpty()){
+            msg("Llenar campo");
+            ct.requestFocus();
+        }
+    }
+    public void msg(String msg){
+        javax.swing.JOptionPane.showMessageDialog(null,msg);
+    }
+
+    
     /**
      * @param args the command line arguments
      */
@@ -679,6 +920,9 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
