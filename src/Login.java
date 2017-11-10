@@ -300,6 +300,10 @@ public class Login extends javax.swing.JFrame {
                     default:
                         break;
                 }
+            }else{
+                msg("Contraseña equivocada");
+                pass.setText("");
+                user.setText("");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
