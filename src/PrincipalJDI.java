@@ -1,7 +1,9 @@
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +29,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
     String aInf[]={"Escojer uno","Supervisor","Personal"};
     String aAdm[]={"Escojer uno","Secretaria","Empleado/Chofer"};
 
-    //MySql db=new MySql();
+    MySql db=new MySql();
     Conexion con = new Conexion();
     Connection conn = con.getConexion();
     public PrincipalJDI() {
@@ -537,10 +539,11 @@ public class PrincipalJDI extends javax.swing.JFrame{
                             .addComponent(jLabel22)
                             .addComponent(txtusu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(txtcont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5)))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel23)
+                                .addComponent(txtcont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addComponent(jLabel36)
                         .addGap(18, 18, 18)
@@ -1034,8 +1037,28 @@ public class PrincipalJDI extends javax.swing.JFrame{
             jButton7.setEnabled(true);
         }
     }//GEN-LAST:event_jTextField2FocusLost
-
+ public boolean existsUs(String usu){
+        try{
+            Connection con = db.MySQLConnect();
+            Statement s =  con.createStatement();
+            String sql="select * from usuarios where nombreUsuario =\""+usu+"\"";
+            ResultSet r = s.executeQuery(sql);
+            boolean found = false;
+            while(r.next()){ 
+                found=true; 
+             
+            }
+            return found;
+        }catch(SQLException e){
+          //  System.out.println(e.getMessage());
+            return false;
+        }
+    }
+ 
     private void txtusuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusuFocusLost
+ if(existsUs (txtusu.getText())){
+     msg("Este usuario ya existe ");
+ }
         // TODO add your handling code here:
         esNulo(txtusu.getText(),txtusu);
     }//GEN-LAST:event_txtusuFocusLost
@@ -1165,6 +1188,9 @@ public class PrincipalJDI extends javax.swing.JFrame{
         lg.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    
+    
+    
     //Metodo asignacion de segundo combo box
     public void cmbInit(){
         int i=cmbarea.getSelectedIndex();
