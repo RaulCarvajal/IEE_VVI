@@ -30,7 +30,7 @@ public class SolicitarViatico extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SolicitarViatico.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //obtener los empleados
+        //obtener los empleados 
        this.cbempleado.removeAllItems();
         try {
             String sql = "SELECT CONCAT(nombrePersonal, \" \", apellidoPaterno, \" \" , apellidoMaterno, \" \") "
