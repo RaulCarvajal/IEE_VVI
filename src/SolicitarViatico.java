@@ -4,9 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import modelo.Conexion;
+import modelo.MetodosDB;
 
 /**
  *
@@ -16,6 +19,8 @@ public class SolicitarViatico extends javax.swing.JFrame {
     
     Conexion con = new Conexion();
     Connection conn = con.getConexion();
+    
+    MetodosDB mt = new MetodosDB();
     
     public SolicitarViatico() {
         initComponents();
@@ -45,7 +50,44 @@ public class SolicitarViatico extends javax.swing.JFrame {
         }        
     }
     public void insertarViatico(){
-        
+        try {
+            //leer datos
+            String folio=txtfolio.getText();
+            
+            Date fecsalida=txtfechasalida.getDate();
+            java.sql.Date sqlDate;
+            sqlDate = new java.sql.Date(fecsalida.getTime());
+            
+            Date fecretorno=txtfecharetorno.getDate();
+            java.sql.Date sqlDate1;
+            sqlDate1 = new java.sql.Date(fecsalida.getTime());
+            //personal
+            
+            //
+            String lugar = txtlugar.getText();
+            String Actividad = txtactividad.getText();
+            String pernotado = (String) cbpernotado.getSelectedItem();
+            /* 
+            INSERT INTO solicitudViatico (folioViatico,fechaSolicitud,fechaAprobacion,fechaSalida,fechaRetorno,destino,
+            status,Pernotado,personal_idpersonal) VALUES('AEF54614',now(),NULL,'14-11-1994','15-11-1994','Tepic','Activo','SI',5)
+            */
+            
+            String sqlviatico = "INSERT INTO solicitudViatico "
+                    + "(folioViatico,fechaSolicitud,fechaAprobacion,fechaSalida,"
+                    + "fechaRetorno,destino,actividadViatico,status,Pernotado,personal_idpersonal)\n" +
+                    "VALUES(?,now(),NULL,?,?,?,?,'Pendiente',?,?)" ;
+            PreparedStatement pst = conn.prepareStatement(sqlviatico);   
+            pst.setString(1, folio);
+            pst.setDate(4, sqlDate);
+            pst.setDate(5, sqlDate1);
+            pst.setString(6, lugar);
+            pst.setString(7, Actividad);
+            pst.setString(8,pernotado);
+            pst.setInt(9, WIDTH);
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

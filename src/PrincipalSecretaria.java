@@ -66,9 +66,6 @@ public class PrincipalSecretaria extends javax.swing.JFrame {
             //Capturar fecha de nacimiento
             Date fecnac= txtfecnac.getDate();
             //convertir el fecnac 
-            //java.sql.Date date2 = new java.sql.Date(d.getTime());
-            //java.sql.Date date = new java.sql.Date(fecnac);
-            //    java.util.Date utilDate = new java.util.Date();
             java.sql.Date sqlDate;
             sqlDate = new java.sql.Date(fecnac.getTime());
             
