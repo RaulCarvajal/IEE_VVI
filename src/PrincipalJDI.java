@@ -1,14 +1,13 @@
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
+import modelo.MetodosDB;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,15 +24,12 @@ public class PrincipalJDI extends javax.swing.JFrame{
     /**
      * Creates new form PrincipalJDI
      */
-    String aPre[]={"Escojer uno","Presidencia","Jefe de informatica","Jefe de finanzas"};
-    String aInf[]={"Escojer uno","Supervisor","Personal"};
-    String aAdm[]={"Escojer uno","Secretaria","Empleado/Chofer"};
-
-    MySql db=new MySql();
+    MetodosDB db;
     Conexion con = new Conexion();
     Connection conn = con.getConexion();
     public PrincipalJDI() {
         initComponents();
+        db=new MetodosDB();
     }
 
     /**
@@ -595,7 +591,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
+                .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -667,7 +663,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -692,7 +688,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
                                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(101, 101, 101)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
                                 .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -717,7 +713,8 @@ public class PrincipalJDI extends javax.swing.JFrame{
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField25)
-                                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(83, 83, 83)))
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -752,7 +749,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel33)
                                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -790,9 +787,11 @@ public class PrincipalJDI extends javax.swing.JFrame{
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 1126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -811,7 +810,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -1014,7 +1013,7 @@ public class PrincipalJDI extends javax.swing.JFrame{
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
         // TODO add your handling code here:
-        cmbInit();
+        
     }//GEN-LAST:event_jComboBox5ItemStateChanged
 
     private void jTextField14FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField14FocusLost
@@ -1037,28 +1036,8 @@ public class PrincipalJDI extends javax.swing.JFrame{
             jButton7.setEnabled(true);
         }
     }//GEN-LAST:event_jTextField2FocusLost
- public boolean existsUs(String usu){
-        try{
-            Connection con = db.MySQLConnect();
-            Statement s =  con.createStatement();
-            String sql="select * from usuarios where nombreUsuario =\""+usu+"\"";
-            ResultSet r = s.executeQuery(sql);
-            boolean found = false;
-            while(r.next()){ 
-                found=true; 
-             
-            }
-            return found;
-        }catch(SQLException e){
-          //  System.out.println(e.getMessage());
-            return false;
-        }
-    }
- 
+
     private void txtusuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusuFocusLost
- if(existsUs (txtusu.getText())){
-     msg("Este usuario ya existe ");
- }
         // TODO add your handling code here:
         esNulo(txtusu.getText(),txtusu);
     }//GEN-LAST:event_txtusuFocusLost
@@ -1113,9 +1092,19 @@ public class PrincipalJDI extends javax.swing.JFrame{
     }//GEN-LAST:event_txtnolicFocusLost
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        insertarEmpleado();
-        insertar_personal();
+        boolean usu=db.insertar_usuario(txtusu.getText(),txtcont.getText(), cmbtipo.getSelectedIndex()+1);
+        Date fecnac= txtfechanac.getDate();
+        java.sql.Date sqlDate;
+        sqlDate = new java.sql.Date(fecnac.getTime());
+        String tipo=(String) cmbtipo.getSelectedItem();
+        String area=(String) cmbarea.getSelectedItem();
+        boolean per=db.insertar_personal(txtnom.getText(),txtpat.getText(),txtmat.getText(),txtrfc.getText(),sqlDate,txttel.getText(),txtcall.getText(),txtcol.getText(),txtcp.getText(),txtnolic.getText(),txtcred.getText(),tipo,area);
+        if(usu&&per){
+            msg("Usuario insertado corectamente");
+        }else{
+            msg("Usuario NO insertado");
+        }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtrfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrfcFocusLost
@@ -1189,30 +1178,6 @@ public class PrincipalJDI extends javax.swing.JFrame{
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     
-    
-    
-    //Metodo asignacion de segundo combo box
-    public void cmbInit(){
-        int i=cmbarea.getSelectedIndex();
-        if(i==-1){
-            cmbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Seleccione area"}));
-        }else switch(i){
-            case 0:
-                break;
-            case 1://dir
-                cmbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(aPre));
-                break;
-            case 2://inf
-                cmbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(aInf));
-                break;
-            case 3://admn
-                cmbtipo.setModel(new javax.swing.DefaultComboBoxModel<>(aAdm));
-                break;
-            default:
-                break;
-        }
-    }
-    
     //Metodo para mensajes
     public void msg(String msg){
         javax.swing.JOptionPane.showMessageDialog(null,msg);
@@ -1238,92 +1203,17 @@ public class PrincipalJDI extends javax.swing.JFrame{
         }
     }
     
-    public void insertar_personal(){
-        
-        try {
-            String nombre = txtnom.getText();
-            String apepat = txtpat.getText();
-            String apemat = txtmat.getText();
-            String rfc = txtrfc.getText();
-            //Capturar fecha de nacimiento
-            Date fecnac= txtfechanac.getDate();
-            //convertir el fecnac 
-            //java.sql.Date date2 = new java.sql.Date(d.getTime());
-            //java.sql.Date date = new java.sql.Date(fecnac);
-            //    java.util.Date utilDate = new java.util.Date();
-            java.sql.Date sqlDate;
-            sqlDate = new java.sql.Date(fecnac.getTime());
-            
-            String telefono = txttel.getText();
-            String calle = txtcall.getText();
-            String colonia = txtcol.getText();
-            String cp = txtcp.getText();
-            String numlic = txtnolic.getText();
-            String numcred = txtcred.getText();
-            String TipoEmpleado= (String) cmbtipo.getSelectedItem() ;
-            //String puesto =txtpuesto.getText();
-            String area= (String) cmbarea.getSelectedItem() ;
-            //last_insert_id()
-            //insert into autobuses_viajeros (id_bus, id_viajero, fecha) VALUES (1, last_insert_id(), now());
+    //public void campos vacios
+    public boolean camposVacios(){
+        boolean result=txtcall.getText().isEmpty()&&txtcol.getText().isEmpty()&&txtcont.getText().isEmpty()&&txtcp.getText().isEmpty();
+        boolean result1=txtcred.getText().isEmpty()&&txtmat.getText().isEmpty()&&txtnolic.getText().isEmpty()&&txtnom.getText().isEmpty();
+        boolean result2=txtnum.getText().isEmpty()&&txtpat.getText().isEmpty()&&txtrfc.getText().isEmpty()&&txttel.getText().isEmpty()&&txtusu.getText().isEmpty();
+        if(result&&result1&&result2){
+            return true;
+        }
+        return false;
+    }
 
-            String sqlpersonal = "INSERT INTO personal (nombrePersonal,apellidoPaterno,apellidoMaterno,calle,colonia,codigoPostal,telefono," +
-                    "fechaNac,rfc,nolic,nocred,nombreArea,tipoPuesto,usuarios_idusuarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,last_insert_id())" ;
-            PreparedStatement pst = conn.prepareStatement(sqlpersonal);
-            pst.setString(1, nombre);
-            pst.setString(2, apepat);
-            pst.setString(3, apemat);
-            pst.setString(4, calle);
-            pst.setString(5, colonia);
-            pst.setString(6, cp);
-            pst.setString(7,telefono);
-            pst.setDate(8, sqlDate);
-            pst.setString(9,rfc);
-            pst.setString(10, numlic);
-            pst.setString(11,numcred);
-            pst.setString(12, area);
-            pst.setString(13,TipoEmpleado);
-            pst.executeUpdate();
-  
-        } catch (SQLException ex) {
-            Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            JOptionPane.showMessageDialog(null,"Datos insertados Correctamente");
-        }
-    }
-    
-    public void insertarEmpleado(){
-        try {
-            //leer valores
-            //String categoria1 = (String) jCCategoria1.getSelectedItem(); new String(JPasswordField.getPassword())
-            
-  
-            String nombreUsuario = txtusu.getText();
-            String password = txtcont.getText();
-            int tipo=cmbtipo.getSelectedIndex()+1;
-            /*
-            INSERT INTO `personal` (`nombrePersonal`, `apellidoPaterno`, `apellidoMaterno`, `calle`, `colonia`, `codigoPostal`, `telefono`,
-            `fechaNac`, `rfc`, `nolic`, `nocred`, `nombreArea`, `tipoPuesto`, `usuarios_idusuarios`) VALUES ('Oliver Jasiel', 'Galaviz',
-            'Arroyo', 'Privada Chapultepec No. 22', 'Bellavista', '63501', '3117407111', '1994-11-19', 'GAAO941119',
-            '654651346816', '651651681651', 'Administracion', 'Empleado', '1')
-            */
-            String sqlusuario ="INSERT INTO usuarios (nombreUsuario,password,tipoUsuario,status) VALUES (?,?,?,'Activo')";
-            PreparedStatement pst = conn.prepareStatement(sqlusuario);
-            pst.setString(1, nombreUsuario);
-            pst.setString(2, password);
-            pst.setInt(3,tipo);
-            pst.executeUpdate();
-            
-            
-            //consulta SQL tabla personal
-            //preparar la sentencia sql
-            /*String sql = "INSERT INTO personal (nombrePersonal,apellidoPaterno,apellidoMaterno,calle,colonia,codigoPostal,telefono," +
-                    "        fechaNac,rfc,nolic,nocred,nombreArea,tipoPuesto,usuarios_idusuarios) VALUES ()";*/
-            //PreparedStatement pst = conn.prepareStatement(cp);
-        } catch (SQLException ex) {
-            Logger.getLogger(PrincipalSecretaria.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     /**
      * @param args the command line arguments
      */
