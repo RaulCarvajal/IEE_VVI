@@ -1040,6 +1040,11 @@ public class PrincipalJDI extends javax.swing.JFrame{
     private void txtusuFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtusuFocusLost
         // TODO add your handling code here:
         esNulo(txtusu.getText(),txtusu);
+        if(db.existsUsu(txtusu.getText())){
+            msg("Este nombre de usuario ya existe");
+            txtusu.setText("");
+            txtusu.requestFocus();
+        }
     }//GEN-LAST:event_txtusuFocusLost
 
     private void txtcontFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcontFocusLost
@@ -1092,19 +1097,22 @@ public class PrincipalJDI extends javax.swing.JFrame{
     }//GEN-LAST:event_txtnolicFocusLost
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        boolean usu=db.insertar_usuario(txtusu.getText(),txtcont.getText(), cmbtipo.getSelectedIndex()+1);
-        Date fecnac= txtfechanac.getDate();
-        java.sql.Date sqlDate;
-        sqlDate = new java.sql.Date(fecnac.getTime());
-        String tipo=(String) cmbtipo.getSelectedItem();
-        String area=(String) cmbarea.getSelectedItem();
-        boolean per=db.insertar_personal(txtnom.getText(),txtpat.getText(),txtmat.getText(),txtrfc.getText(),sqlDate,txttel.getText(),txtcall.getText(),txtcol.getText(),txtcp.getText(),txtnolic.getText(),txtcred.getText(),tipo,area);
-        if(usu&&per){
-            msg("Usuario insertado corectamente");
+        if(!camposVacios()){
+            boolean usu=db.insertar_usuario(txtusu.getText(),txtcont.getText(), cmbtipo.getSelectedIndex()+1);
+            Date fecnac= txtfechanac.getDate();
+            java.sql.Date sqlDate;
+            sqlDate = new java.sql.Date(fecnac.getTime());
+            String tipo=(String) cmbtipo.getSelectedItem();
+            String area=(String) cmbarea.getSelectedItem();
+            boolean per=db.insertar_personal(txtnom.getText(),txtpat.getText(),txtmat.getText(),txtrfc.getText(),sqlDate,txttel.getText(),txtcall.getText(),txtcol.getText(),txtcp.getText(),txtnolic.getText(),txtcred.getText(),tipo,area);
+            if(usu&&per){
+                msg("Usuario insertado corectamente");
+            }else{
+                msg("Usuario NO insertado");
+            }
         }else{
-            msg("Usuario NO insertado");
+            msg("No dejar campos vacios");
         }
-
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtrfcFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtrfcFocusLost
