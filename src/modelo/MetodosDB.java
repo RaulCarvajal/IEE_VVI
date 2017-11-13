@@ -230,4 +230,22 @@ public class MetodosDB {
         }
     }
     
+    //Saber si existe un usuario
+    public boolean existsUsu(String usu){
+        try{
+            Connection con = conn.getConexion();
+            Statement s =  con.createStatement();
+            String sql="SELECT * FROM usuarios WHERE nombreUsuario =\""+usu+"\"";
+            ResultSet r = s.executeQuery(sql);
+            boolean found = false;
+            while(r.next()){ 
+                found=true; 
+            }
+            return found;
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
 }
