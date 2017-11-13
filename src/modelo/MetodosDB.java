@@ -248,4 +248,23 @@ public class MetodosDB {
         }
     }
     
+    //Metodo que obtenga id de personal dependiendo del nombre de la persona
+    public int indPersonal(String nom,String ap,String am){
+        try{
+            Connection con = conn.getConexion();
+            Statement s =  con.createStatement();
+            String sql="SELECT idpersonal FROM personal "
+                      +"WHERE nombrePersonal =\""+nom+"\" AND apellidoParterno =\""+ap+"\" AND apellidoMaterno =\""+am+"\";";
+            ResultSet r = s.executeQuery(sql);
+            int id = 0;
+            while(r.next()){ 
+                id=r.getInt("idpersonal"); 
+            }
+            return id;
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            return -1;
+        }
+    }
+    
 }
