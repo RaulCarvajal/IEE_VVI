@@ -248,7 +248,7 @@ public class Login extends javax.swing.JFrame {
         if(!user.getText().isEmpty()){
             if(!existsUsu(user.getText())){
                 user.setText(user.getText()+" <- Revisar nombre de usuario");
-                user.setForeground(Color.red);
+                user.setBackground(Color.red);
             }
         }
     }//GEN-LAST:event_userFocusLost
@@ -312,7 +312,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         user.setText("");
         pass.setText("");
-        user.setForeground(Color.BLACK);
+        user.setForeground(new Color(250,250,250));
     }//GEN-LAST:event_userFocusGained
 
     public boolean existsUsu(String usu){
