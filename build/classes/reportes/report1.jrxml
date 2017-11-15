@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e489056e-e51f-4c9e-8fb8-e4e1031b8044">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="356" height="79" uuid="e20ba3af-393d-4868-b9e1-1172074f1a0d"/>
+				<imageExpression><![CDATA["C:\\Users\\USUARIO\\Documents\\NetBeansProjects\\IEE_VVI\\build\\classes\\img\\banner.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="365" y="47" width="117" height="20" uuid="bd16c917-861e-4fd2-a542-3fadbaf185aa"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Folio Numero:______________]]></text>
+			</staticText>
+			<line>
+				<reportElement x="443" y="56" width="100" height="1" uuid="ca49c272-78f1-4131-a457-d5fe72ff9446"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="243" y="4" width="100" height="20" uuid="ab3be29e-cb07-4645-96d6-2fd69a95e449"/>
+				<textElement>
+					<font fontName="Arial Black" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIATICOS ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="10" width="45" height="20" uuid="284600de-48f7-41f7-9c3d-47d9f51ec771"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="41" width="45" height="20" uuid="c452562b-4249-415f-8ef4-ffc15a76b75b"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Puesto: ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="63" y="23" width="306" height="1" uuid="336bc240-9eb6-423b-9d9c-f63473759ce7"/>
+			</line>
+			<line>
+				<reportElement x="61" y="51" width="305" height="1" uuid="93bdd8c2-246c-4708-b070-21b1ec10c954"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="417" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="12" width="319" height="20" uuid="337d9bf5-f67c-4c3e-821d-e4a303dda2fa"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Con base en el Oficio de Comisión se autoriza la cantidad de:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="369" y="12" width="149" height="20" uuid="bf80207b-8e51-4ba8-b808-f4f0bfcca700"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="198" y="32" width="100" height="20" uuid="305366eb-bb0a-44ea-8834-fb9be095881c"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[( PESO 00/100 M.N.) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="57" width="100" height="20" uuid="538d6ede-f867-411f-8927-2def4744907f"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Con motivo de:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="17" y="77" width="501" height="86" uuid="de5df719-2ad8-4816-bfb3-6edf6abe95c7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="18" y="172" width="338" height="20" uuid="053f79ce-ba5a-4fe8-8e91-863156e82801"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Para llevar a cabo la visita de trabajo en la localidad de :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="17" y="188" width="501" height="48" uuid="17c2994a-38bb-4e47-b69c-f546eb390880"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="18" y="244" width="129" height="20" uuid="26f20e38-3462-4dcc-a6ce-5d001c1909c3"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Vehiculo Oficial Asignado: ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="18" y="261" width="500" height="26" uuid="c0b3b924-94f9-4254-9bfd-a5534afb342b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="19" y="309" width="100" height="20" uuid="118cfb80-895b-46b2-8151-8dcef0ddc18e"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[Por los dias :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="20" y="338" width="100" height="1" uuid="06807001-d131-49c6-9462-a53c0ba5b44b"/>
+			</line>
+			<staticText>
+				<reportElement x="142" y="328" width="21" height="20" uuid="2fdf80be-9f4f-4d67-9db7-4b9612e2e719"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[de]]></text>
+			</staticText>
+			<line>
+				<reportElement x="184" y="338" width="100" height="1" uuid="f49da9db-dbdf-4cfb-a54c-c4bd0a10d527"/>
+			</line>
+			<staticText>
+				<reportElement x="386" y="396" width="100" height="19" uuid="d24db808-7761-4f4f-bff9-e0b9c9e8c17e"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="431" y="391" width="100" height="1" uuid="de00b980-04cd-47ff-a492-d118599ab46e"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="76" splitType="Stretch">
+			<staticText>
+				<reportElement x="386" y="29" width="100" height="20" uuid="ff34071f-1169-4ca3-a371-5c39f7e9b3a0"/>
+				<text><![CDATA[Firma de autorizado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="29" width="100" height="20" uuid="da24b874-4eb1-4f06-80f0-3f981ed9381f"/>
+				<text><![CDATA[Firma de recibido]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<line>
+				<reportElement x="20" y="16" width="184" height="1" uuid="851c979d-4211-4020-b73a-eb761c2ed705"/>
+			</line>
+			<staticText>
+				<reportElement x="63" y="17" width="100" height="20" uuid="9e8f2042-f763-4c01-a1ce-4fe904467695"/>
+				<text><![CDATA[COMISIONADO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="345" y="14" width="173" height="1" uuid="340a3808-2d39-49d1-8e26-29180216e56b"/>
+			</line>
+			<staticText>
+				<reportElement x="345" y="17" width="186" height="27" uuid="ad8bd6c3-0808-49fb-b9d3-e212c3ce823c"/>
+				<text><![CDATA[DR. CELSO VALDERRAMA DELGADO CONSEJERO PRESIDENTE ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="122" splitType="Stretch"/>
+	</summary>
+</jasperReport>
