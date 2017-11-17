@@ -53,8 +53,8 @@ VALUES
 ("Fecha Servicio",2),
 ("Km Inicial",2),
 ("Km Final",2),
-("Placas",2)
-("Modelo",2)
+("Placas",2),
+("Modelo",2),
 ("Compania",2);
 
 ("Null",1);
